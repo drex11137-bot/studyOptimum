@@ -21,8 +21,10 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Install System Dependencies
-        run: npm install
+      - name: Install Yarn Engine & System Dependencies
+        run: |
+          npm install -g yarn
+          yarn install
 
       - name: Generate Native Android Code
         run: npx expo prebuild --platform android --clean
