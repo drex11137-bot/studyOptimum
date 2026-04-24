@@ -28,7 +28,9 @@ jobs:
           yarn install
 
       - name: Generate Native Android Code
-        run: npx expo prebuild --platform android --clean
+        run: |
+          npx expo prebuild --platform android --clean --no-install
+          yarn install
 
       - name: Compile APK via Gradle (Release Mode)
         run: |
