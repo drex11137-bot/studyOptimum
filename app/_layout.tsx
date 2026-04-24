@@ -4,18 +4,18 @@ import { Stack } from 'expo-router';
 import { useStudyStore } from '../store/useStudyStore';
 
 export default function RootLayout() {
-  const { initialize, isInitialized } = useStudyStore();
+  const { initStore, isInitialized } = useStudyStore();
 
   useEffect(() => {
-    initialize();
+    initStore();
   }, []);
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      <Stack screenOptions={{ 
+      <Stack screenOptions={{
         headerShown: false,
-        contentStyle: { backgroundColor: '#09090B' } 
+        contentStyle: { backgroundColor: '#09090B' }
       }} />
     </View>
   );
