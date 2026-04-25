@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Link } from 'expo-router';
 
 export default function IndexScreen() {
   return (
@@ -19,38 +18,33 @@ export default function IndexScreen() {
       <Text style={styles.sectionTitle}>Your Workspace</Text>
 
       <View style={styles.grid}>
-        <Link href="/study" asChild>
-          <TouchableOpacity style={[styles.card, styles.cardAccent]}>
-            <Text style={[styles.cardTitle, styles.cardTitleAccent]}>Focus Session</Text>
-            <Text style={[styles.cardDesc, styles.cardDescAccent]}>Enter deep work</Text>
-          </TouchableOpacity>
-        </Link>
-        <Link href="/flashcards" asChild>
-          <TouchableOpacity style={styles.card}>
-            <Text style={styles.cardTitle}>Spaced Rep</Text>
-            <Text style={styles.cardDesc}>30 cards due</Text>
-          </TouchableOpacity>
-        </Link>
-        <Link href="/notes" asChild>
-          <TouchableOpacity style={styles.card}>
-            <Text style={styles.cardTitle}>Capture</Text>
-            <Text style={styles.cardDesc}>Quick notes</Text>
-          </TouchableOpacity>
-        </Link>
-        <Link href="/planner" asChild>
-          <TouchableOpacity style={styles.card}>
-            <Text style={styles.cardTitle}>Planner</Text>
-            <Text style={styles.cardDesc}>Schedule tasks</Text>
-          </TouchableOpacity>
-        </Link>
+        
+        <TouchableOpacity style={[styles.card, styles.cardAccent]}>
+          <Text style={[styles.cardTitle, styles.cardTitleAccent]}>Focus Session</Text>
+          <Text style={[styles.cardDesc, styles.cardDescAccent]}>Enter deep work</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.card}>
+          <Text style={styles.cardTitle}>Spaced Rep</Text>
+          <Text style={styles.cardDesc}>30 cards due</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.card}>
+          <Text style={styles.cardTitle}>Capture</Text>
+          <Text style={styles.cardDesc}>Quick notes</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.card}>
+          <Text style={styles.cardTitle}>Planner</Text>
+          <Text style={styles.cardDesc}>Schedule tasks</Text>
+        </TouchableOpacity>
+
       </View>
 
       <View style={{ marginTop: 40 }}>
-        <Link href="/about" asChild>
-          <TouchableOpacity style={styles.secondaryButton}>
-            <Text style={styles.secondaryText}>About & Legal Settings</Text>
-          </TouchableOpacity>
-        </Link>
+        <TouchableOpacity style={styles.secondaryButton}>
+          <Text style={styles.secondaryText}>About & Legal Settings</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -81,41 +75,41 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     fontStyle: 'italic',
     fontFamily: 'serif',
-    marginTop: 4,
   },
   streakCard: {
     backgroundColor: '#18181B',
     borderRadius: 16,
     padding: 24,
-    marginBottom: 32,
     borderWidth: 1,
     borderColor: '#27272A',
+    marginBottom: 40,
   },
   streakLabel: {
-    color: '#71717A',
     fontSize: 12,
+    color: '#A1A1AA',
     textTransform: 'uppercase',
+    fontWeight: '600',
     letterSpacing: 1,
     marginBottom: 8,
   },
   streakNumber: {
-    fontSize: 40,
-    color: '#EDEDED',
+    fontSize: 48,
+    color: '#FFFFFF',
     fontWeight: '300',
     fontStyle: 'italic',
     fontFamily: 'serif',
+    marginBottom: 8,
   },
   streakSubtext: {
-    color: '#3B82F6',
     fontSize: 13,
-    marginTop: 8,
+    color: '#71717A',
     fontWeight: '500',
   },
   sectionTitle: {
     fontSize: 12,
     color: '#71717A',
-    fontWeight: '700',
     textTransform: 'uppercase',
+    fontWeight: '700',
     letterSpacing: 1,
     marginBottom: 16,
   },
@@ -126,10 +120,10 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   card: {
+    width: '47%',
     backgroundColor: '#18181B',
     borderRadius: 16,
     padding: 20,
-    width: '47%',
     borderWidth: 1,
     borderColor: '#27272A',
   },
@@ -143,13 +137,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: 4,
   },
-  cardTitleAccent: {
-    color: '#09090B',
-    fontWeight: '700',
-  },
   cardDesc: {
     fontSize: 12,
     color: '#A1A1AA',
+  },
+  cardTitleAccent: {
+    color: '#09090B',
   },
   cardDescAccent: {
     color: '#52525B',
@@ -158,14 +151,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderWidth: 1,
     borderColor: '#27272A',
-    borderRadius: 100,
     paddingVertical: 12,
+    borderRadius: 100,
     alignItems: 'center',
   },
   secondaryText: {
     color: '#A1A1AA',
     fontSize: 13,
     fontWeight: '500',
-    letterSpacing: 0.5,
-  }
+  },
 });
