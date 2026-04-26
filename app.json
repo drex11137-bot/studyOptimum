@@ -1,32 +1,42 @@
 {
   "expo": {
-    "name": "StudyOptimum",
-    "slug": "study-optimum",
+    "name": "studyOptimum",
+    "slug": "studyOptimum",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "backgroundColor": "#000000"
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "#000000"
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
       },
       "package": "com.divine.studyoptimum"
     },
     "web": {
-      "favicon": "./assets/icon.png"
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-file-system",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app needs to access your photos to attach them to your notes.",
+          "cameraPermission": "The app needs to access your camera to capture notes."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
