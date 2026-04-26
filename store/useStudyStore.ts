@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import * as SQLite from 'expo-sqlite';
 
 interface StudyState {
   isInitialized: boolean;
@@ -18,10 +19,26 @@ export const useStudyStore = create<StudyState>((set, get) => ({
 
   initStore: async () => {
     try {
-      // Offline SQLite Database initialization maps here
+      // 1. Establish the Native SQLite Bridge
+      const db = await SQLite.openDatabaseAsync('studyoptimum.db');
+      
+      // 2. Execute strict synchronous schema creation
+      await db.execAsync(`
+        CREATE TABLE IF NOT EXISTS flashcards (
+          id TEXT PRIMARY KEY NOT NULL,
+          front TEXT NOT NULL,
+          back TEXT NOT NULL,
+          ease_factor REAL NOT NULL,
+          interval INTEGER NOT NULL,
+          repetitions INTEGER NOT NULL,
+          due_date INTEGER NOT NULL
+        );
+      `);
+
+      // 3. Authorize the UI Thread to proceed
       set({ isInitialized: true });
     } catch (error) {
-      console.error("Initialization error:", error);
+      console.error("Database allocation fatal error:", error);
     }
   },
 
