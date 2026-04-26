@@ -1,51 +1,71 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router'; // Critical: Injects the navigation engine
 
-export default function IndexScreen() {
+export default function HomeScreen() {
+  const router = useRouter(); // Initialize the engine
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <View style={styles.header}>
-        <Text style={styles.greeting}>Good morning,</Text>
-        <Text style={styles.username}>Student</Text>
-      </View>
-
+      
+      <Text style={styles.title}>Student</Text>
+      
       <View style={styles.streakCard}>
-        <Text style={styles.streakLabel}>Current Streak</Text>
+        <Text style={styles.streakLabel}>CURRENT STREAK</Text>
         <Text style={styles.streakNumber}>12 days</Text>
         <Text style={styles.streakSubtext}>Next review due in 2 hours</Text>
       </View>
 
-      <Text style={styles.sectionTitle}>Your Workspace</Text>
-
+      <Text style={styles.sectionTitle}>YOUR WORKSPACE</Text>
+      
       <View style={styles.grid}>
-        
-        <TouchableOpacity style={[styles.card, styles.cardAccent]}>
-          <Text style={[styles.cardTitle, styles.cardTitleAccent]}>Focus Session</Text>
-          <Text style={[styles.cardDesc, styles.cardDescAccent]}>Enter deep work</Text>
+        {/* Navigation Bind 1: Focus */}
+        <TouchableOpacity 
+          style={styles.card}
+          onPress={() => router.push('/focus')}
+        >
+          <Text style={styles.cardTitle}>Focus Session</Text>
+          <Text style={styles.cardSubtext}>Enter deep work</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.card}>
+        {/* Navigation Bind 2: Spaced Rep */}
+        <TouchableOpacity 
+          style={styles.card}
+          onPress={() => router.push('/spaced-rep')}
+        >
           <Text style={styles.cardTitle}>Spaced Rep</Text>
-          <Text style={styles.cardDesc}>30 cards due</Text>
+          <Text style={styles.cardSubtext}>30 cards due</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.card}>
+        {/* Navigation Bind 3: Capture */}
+        <TouchableOpacity 
+          style={styles.card}
+          onPress={() => router.push('/capture')}
+        >
           <Text style={styles.cardTitle}>Capture</Text>
-          <Text style={styles.cardDesc}>Quick notes</Text>
+          <Text style={styles.cardSubtext}>Quick notes</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.card}>
+        {/* Navigation Bind 4: Planner */}
+        <TouchableOpacity 
+          style={styles.card}
+          onPress={() => router.push('/planner')}
+        >
           <Text style={styles.cardTitle}>Planner</Text>
-          <Text style={styles.cardDesc}>Schedule tasks</Text>
+          <Text style={styles.cardSubtext}>Schedule tasks</Text>
         </TouchableOpacity>
-
       </View>
 
       <View style={{ marginTop: 40 }}>
-        <TouchableOpacity style={styles.secondaryButton}>
+        {/* Navigation Bind 5: Settings */}
+        <TouchableOpacity 
+          style={styles.secondaryCard}
+          onPress={() => router.push('/settings')}
+        >
           <Text style={styles.secondaryText}>About & Legal Settings</Text>
         </TouchableOpacity>
       </View>
+
     </ScrollView>
   );
 }
@@ -59,57 +79,42 @@ const styles = StyleSheet.create({
     padding: 24,
     paddingTop: 60,
   },
-  header: {
-    marginBottom: 32,
-  },
-  greeting: {
-    fontSize: 12,
-    color: '#71717A',
-    fontWeight: '700',
-    letterSpacing: 1,
-    textTransform: 'uppercase',
-  },
-  username: {
+  title: {
     fontSize: 32,
-    color: '#EDEDED',
-    fontWeight: '300',
-    fontStyle: 'italic',
+    color: '#FFFFFF',
     fontFamily: 'serif',
+    fontStyle: 'italic',
+    marginBottom: 32,
   },
   streakCard: {
     backgroundColor: '#18181B',
-    borderRadius: 16,
     padding: 24,
+    borderRadius: 16,
+    marginBottom: 40,
     borderWidth: 1,
     borderColor: '#27272A',
-    marginBottom: 40,
   },
   streakLabel: {
-    fontSize: 12,
     color: '#A1A1AA',
-    textTransform: 'uppercase',
+    fontSize: 12,
     fontWeight: '600',
     letterSpacing: 1,
     marginBottom: 8,
   },
   streakNumber: {
-    fontSize: 48,
     color: '#FFFFFF',
-    fontWeight: '300',
-    fontStyle: 'italic',
-    fontFamily: 'serif',
-    marginBottom: 8,
+    fontSize: 36,
+    fontWeight: '700',
+    marginBottom: 4,
   },
   streakSubtext: {
-    fontSize: 13,
     color: '#71717A',
-    fontWeight: '500',
+    fontSize: 14,
   },
   sectionTitle: {
+    color: '#A1A1AA',
     fontSize: 12,
-    color: '#71717A',
-    textTransform: 'uppercase',
-    fontWeight: '700',
+    fontWeight: '600',
     letterSpacing: 1,
     marginBottom: 16,
   },
@@ -120,44 +125,34 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   card: {
-    width: '47%',
     backgroundColor: '#18181B',
-    borderRadius: 16,
     padding: 20,
+    borderRadius: 16,
+    width: '47%',
     borderWidth: 1,
     borderColor: '#27272A',
-  },
-  cardAccent: {
-    borderColor: '#FFFFFF',
-    backgroundColor: '#FFFFFF',
   },
   cardTitle: {
+    color: '#FFFFFF',
     fontSize: 16,
-    color: '#EDEDED',
     fontWeight: '600',
-    marginBottom: 4,
+    marginBottom: 8,
   },
-  cardDesc: {
+  cardSubtext: {
+    color: '#71717A',
     fontSize: 12,
-    color: '#A1A1AA',
   },
-  cardTitleAccent: {
-    color: '#09090B',
-  },
-  cardDescAccent: {
-    color: '#52525B',
-  },
-  secondaryButton: {
+  secondaryCard: {
     backgroundColor: 'transparent',
+    padding: 16,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: '#27272A',
-    paddingVertical: 12,
-    borderRadius: 100,
     alignItems: 'center',
   },
   secondaryText: {
     color: '#A1A1AA',
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: '500',
   },
 });
